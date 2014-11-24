@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script data-main="main" src="lib/requirejs/require.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-16">
+                <p class="bg-primary">
+                    <img src="img/logo.png">
+                </p>
+            </div>
+            <div class="col-lg-16">
+                <h1>Gestor de opiniones</h1>
+            </div>
+        </div>
+
+        <section id="opinionsApp">
+            <section id="main">
+
+            </section>
+        </section>
+    </div>
+</body>
+
+<script type="text/template" id="template-main">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Opinión</h3>
+        </div>
+        <div class="panel-body"  id="single-opinion-view">
+            <label class="col-sm-2 control-label">Nombre</label>
+            <div class="col-sm-10">
+                <p class="form-control-static"><%= _nombre %></p>
+            </div>
+
+            <label class="col-sm-2 control-label">Apellidos</label>
+            <div class="col-sm-10">
+                <p class="form-control-static"><%= _apellidos %></p>
+            </div>
+
+            <label class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+                <p class="form-control-static"><%= _email %></p>
+            </div>
+
+            <label class="col-sm-2 control-label">Estado</label>
+            <div class="col-sm-10">
+                <p class="form-control-static"><%= _status %></p>
+            </div>
+
+            <label class="col-sm-2 control-label">Lo mejor</label>
+            <div class="col-sm-10" style="margin-bottom: 5px">
+                <textarea class="form-control" rows="3"><%= _mejor %></textarea>
+            </div>
+
+            <label class="col-sm-2 control-label">Lo peor</label>
+            <div class="col-sm-10" style="margin-bottom: 5px">
+                <textarea class="form-control" rows="3"><%= _peor %></textarea>
+            </div>
+
+            <label class="col-sm-2 control-label">Cuerpo</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="3"><%= _cuerpo %></textarea>
+            </div>
+
+            <button type="button" class="btn btn-success" id="validar-opinion" data-idopinion="<%= id %>">Validar</button>
+            <button type="button" class="btn btn-danger" id="invalidar-opinion" data-idopinion="<%= id %>">Invalidar</button>
+
+        </div>
+
+
+    </div>
+</script>
+</html>
+
+
