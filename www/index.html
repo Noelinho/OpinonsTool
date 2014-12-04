@@ -55,21 +55,27 @@
 
             <label class="col-sm-2 control-label">Lo mejor</label>
             <div class="col-sm-10" style="margin-bottom: 5px">
-                <textarea class="form-control" rows="3"><%= _mejor %></textarea>
+                <textarea class="form-control" rows="3"  id="mejor_<%= id %>"><%= _mejor %></textarea>
             </div>
 
             <label class="col-sm-2 control-label">Lo peor</label>
             <div class="col-sm-10" style="margin-bottom: 5px">
-                <textarea class="form-control" rows="3"><%= _peor %></textarea>
+                <textarea class="form-control" rows="3" id="peor_<%= id %>"><%= _peor %></textarea>
             </div>
 
             <label class="col-sm-2 control-label">Cuerpo</label>
             <div class="col-sm-10">
-                <textarea class="form-control" rows="3"><%= _cuerpo %></textarea>
+                <textarea class="form-control" rows="3" id="cuerpo_<%= id %>"><%= _cuerpo %></textarea>
+            </div>
+
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                &nbsp;
             </div>
 
             <button type="button" class="btn btn-success" id="validar-opinion" data-idopinion="<%= id %>">Validar</button>
             <button type="button" class="btn btn-danger" id="invalidar-opinion" data-idopinion="<%= id %>">Invalidar</button>
+            <button type="button" class="btn btn-primary" id="save-opinion" data-idopinion="<%= id %>">Guardar</button>
 
         </div>
 
