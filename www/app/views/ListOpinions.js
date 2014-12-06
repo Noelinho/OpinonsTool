@@ -9,8 +9,6 @@ define([
         baseCollection: null,
 
         initialize: function() {
-
-
           this.baseCollection = this.collection;
           this.collection.on('reset', this.render, this);
 
@@ -19,6 +17,10 @@ define([
         render: function() {
             var el = $(this.el);
             el.html('');
+
+            var filtersTemplate = _.template($("#template-filters").html());
+            el.append(filtersTemplate());
+
             this.collection.each(function (model) {
                 var singleOpinon = new SingleOpinionView({model:model});
                 el.append(singleOpinon.render().el);

@@ -9,13 +9,15 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-16">
-                <p class="bg-primary">
-                    <img src="img/logo.png">
-                </p>
-            </div>
-            <div class="col-lg-16">
-                <h1>Gestor de opiniones</h1>
+            <div class="col-md-14">
+                    <div class="col-lg-16">
+                        <p class="bg-primary">
+                            <img src="img/logo.png">
+                        </p>
+                    </div>
+                    <div class="col-lg-16">
+                        <h1>Gestor de opiniones</h1>
+                    </div>
             </div>
         </div>
 
@@ -33,6 +35,9 @@
             </div>
         </div>
 
+        <section id="filters">
+
+        </section>
 
         <section id="opinionsApp">
 
@@ -43,21 +48,26 @@
     </div>
 </body>
 
-<script type="text/template" id="template-main">
+<script type="text/template" id="template-filters">
     <div class="row">
-        <div class="col-md-12">
-            <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="all" checked> Todas
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="20"> Válidas
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="10"> Inválidas
-            </label>
+        <div class="col-md-6">
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-default active">
+                    <input type="radio" name="options" id="inlineRadio1" autocomplete="off"> Todas
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="inlineRadio2" autocomplete="off"> Válidas
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="inlineRadio3" autocomplete="off"> Inválidas
+                </label>
+            </div>
         </div>
     </div>
     <br/>
+</script>
+
+<script type="text/template" id="template-main">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-info">
