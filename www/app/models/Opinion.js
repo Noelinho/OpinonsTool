@@ -15,6 +15,20 @@ define([
             _cuerpo: '',
             _id: '',
             _status: ''
+        },
+        save: function()
+        {
+            var data = {'model':JSON.stringify(this)};
+
+            Backbone.ajax({
+                dataType: "json",
+                url: "http://api.emagister.com.devel/api/reviews/save",
+                type: "POST",
+                data: data,
+                success: function(val) {
+                    alert('success');
+                }
+            });
         }
     });
 

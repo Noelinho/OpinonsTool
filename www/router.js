@@ -19,16 +19,10 @@ define([
                     alert('error');
                 }
             });
+            opinionsCollection.setOriginalCollection(opinionsCollection.models);
+
         }
     });
 
-    var initialize = function() {
-       var app_router = new Router;
-
-        Backbone.history.start();
-    };
-
-    return {
-        initialize: initialize
-    };
+    return Router;
 });

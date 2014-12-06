@@ -5,11 +5,20 @@ define([
     'app/views/Opinion'
 ], function($, _, Backbone, SingleOpinionView) {
     var ListOpinionesView = Backbone.View.extend({
+        filter: null,
+        baseCollection: null,
+
         initialize: function() {
+
+
+          this.baseCollection = this.collection;
+          this.collection.on('reset', this.render, this);
+
           this.render();
         },
         render: function() {
             var el = $(this.el);
+            el.html('');
             this.collection.each(function (model) {
                 var singleOpinon = new SingleOpinionView({model:model});
                 el.append(singleOpinon.render().el);
@@ -18,7 +27,10 @@ define([
         events: {
             'click #validar-opinion': 'validarOpinion',
             'click #invalidar-opinion': 'invalidarOpinion',
-            'click #save-opinion': 'saveOpinion'
+            'click #save-opinion': 'saveOpinion',
+            'click #inlineRadio1': 'showAll',
+            'click #inlineRadio2': 'showValid',
+            'click #inlineRadio3': 'showInvalid'
         },
 
         validarOpinion: function(e) {
@@ -27,7 +39,8 @@ define([
 
             var model = this.collection.get(idOpinion);
             model.set('_status', '20');
-            this.saveReview(model);
+
+            model.save();
         },
         invalidarOpinion: function(e) {
             e.preventDefault();
@@ -35,8 +48,8 @@ define([
 
             var model = this.collection.get(idOpinion);
             model.set('_status', '10');
-            this.saveReview(model);
-            //model.save();
+
+            model.save();
         },
         saveOpinion: function(e) {
             e.preventDefault();
@@ -46,23 +59,38 @@ define([
             model.set('_mejor', $('#mejor_' + idOpinion).val());
             model.set('_peor', $('#peor_' + idOpinion).val());
             model.set('_cuerpo', $('#cuerpo_' + idOpinion).val());
-            this.saveReview(model);
-            //model.save();
+
+            model.save();
         },
-        saveReview: function(model) {
-            var data = {'model':JSON.stringify(model)};
+        showValid:function(e) {
+            this.filter = '20';
 
-            Backbone.ajax({
-                dataType: "json",
-                url: "http://api.emagister.com.devel/api/reviews/save",
-                type: "POST",
-                data: data,
-                success: function(val) {
-                    alert('success');
-                }
-            });
+            this.filterCollection();
+        },
+        showInvalid:function(e) {
+            this.filter = '10';
+
+            this.filterCollection();
+        },
+        showAll:function(e) {
+            this.filter = undefined;
+
+            this.filterCollection();
+        },
+        filterCollection: function(e) {
+            var filtered;
+            var original = this.collection.originalCollection;
+
+            var filteredCollection = new Backbone.Collection(original,{});
+
+            if (this.filter) {
+                filtered = filteredCollection.where({_status: this.filter});
+            } else {
+                filtered = original;
+            }
+
+            this.collection.reset(filtered);
         }
-
     });
 
 
